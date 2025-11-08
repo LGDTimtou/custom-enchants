@@ -112,6 +112,14 @@ public enum TriggerType {
     RIGHT_CLICK_BLOCK(RightClickBlockTrigger.class, RIGHT_CLICK),
     RIGHT_CLICK_ENTITY(RightClickEntityTrigger.class, RIGHT_CLICK_AIR, RIGHT_CLICK_BLOCK),
 
+    SHIFT_LEFT_CLICK(ShiftLeftClickTrigger.class, LEFT_CLICK),
+    SHIFT_LEFT_CLICK_AIR(ShiftLeftClickAirTrigger.class, SHIFT_LEFT_CLICK, LEFT_CLICK_AIR),
+    SHIFT_LEFT_CLICK_BLOCK(ShiftLeftClickBlockTrigger.class, SHIFT_LEFT_CLICK, LEFT_CLICK_BLOCK),
+    SHIFT_RIGHT_CLICK(ShiftRightClickTrigger.class, RIGHT_CLICK),
+    SHIFT_RIGHT_CLICK_AIR(ShiftRightClickAirTrigger.class, SHIFT_RIGHT_CLICK, RIGHT_CLICK_AIR),
+    SHIFT_RIGHT_CLICK_BLOCK(ShiftLeftClickBlockTrigger.class, SHIFT_RIGHT_CLICK, RIGHT_CLICK_BLOCK),
+    SHIFT_RIGHT_CLICK_ENTITY(ShiftRightClickEntityTrigger.class, SHIFT_RIGHT_CLICK, RIGHT_CLICK_ENTITY),
+
     //Movement
     PLAYER_IDLE(PlayerIdleTrigger.class),
     PLAYER_MOVE(PlayerMoveTrigger.class),
