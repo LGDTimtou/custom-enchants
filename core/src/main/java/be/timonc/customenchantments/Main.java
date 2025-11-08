@@ -11,6 +11,7 @@ import be.timonc.customenchantments.websocket.WebSocketConnection;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,6 +19,10 @@ import java.util.regex.Pattern;
 public final class Main extends JavaPlugin {
 
 
+    private static final Map<String, String> minecraftVersionMapper = Map.of(
+            "1.21", "1.21.1",
+            "1.21.7", "1.21.8"
+    );
     private static Main plugin;
     private static boolean PAPISupport;
     private static EnchantmentManager enchantmentsManager;
@@ -101,17 +106,18 @@ public final class Main extends JavaPlugin {
     }
 
     private String getMinecraftVersion() {
-        if (minecraftVersion != null) {
-            return minecraftVersion;
-        } else {
+        if (minecraftVersion == null) {
             String bukkitGetVersionOutput = Bukkit.getVersion();
             Matcher matcher = Pattern.compile("\\(MC: (?<version>[\\d]+\\.[\\d]+(\\.[\\d]+)?)\\)")
                                      .matcher(bukkitGetVersionOutput);
-            if (matcher.find())
-                return minecraftVersion = matcher.group("version");
-            else
+            if (matcher.find()) {
+                minecraftVersion = matcher.group("version");
+                minecraftVersion = minecraftVersionMapper.getOrDefault(minecraftVersion, minecraftVersion);
+            } else
                 throw new RuntimeException("Could not determine Minecraft version from Bukkit.getVersion(): " + bukkitGetVersionOutput);
         }
+
+        return minecraftVersion;
     }
 
     @SuppressWarnings("unchecked")

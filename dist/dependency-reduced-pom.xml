@@ -85,10 +85,9 @@
     </profile>
   </profiles>
   <properties>
-    <maven.compiler.source>21</maven.compiler.source>
-    <test.server.dir>C:/Users/loepi/Dropbox/TIMON/Programming/Test Servers/CustomEnchantsTestServer</test.server.dir>
-    <test.server.version>1_21_5</test.server.version>
     <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <test.server.dir>C:/Users/loepi/Dropbox/TIMON/Programming/Test Servers/CustomEnchantsTest</test.server.dir>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <final.name>CustomEnchants-${project.version}</final.name>
   </properties>
