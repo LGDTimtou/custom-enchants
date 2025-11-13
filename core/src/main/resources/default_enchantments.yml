@@ -13,9 +13,9 @@ replenish:
       in_enchanting_table: true
       treasure: true
       tradeable: true
-    targets:
-      - tool
-    conflicts_with: [ excavator ]
+    supported:
+      - hoes
+    conflicts_with: [ ]
 
 telekinesis:
   enabled: true
@@ -32,9 +32,14 @@ telekinesis:
       in_enchanting_table: true
       treasure: true
       tradeable: true
-    targets:
-      - tool
-      - weapon
+    supported:
+      - pickaxes
+      - axes
+      - hoes
+      - shovels
+      - swords
+      - shears
+      - mace
     conflicts_with: [ ]
 
 excavator:
@@ -52,9 +57,13 @@ excavator:
       in_enchanting_table: true
       treasure: true
       tradeable: true
-    targets:
-      - tool
-    conflicts_with: [ replenish, lumber ]
+    supported:
+      - pickaxes
+      - axes
+      - hoes
+      - shovels
+      - shears
+    conflicts_with: [ lumber ]
 
 lumber:
   enabled: true
@@ -71,7 +80,7 @@ lumber:
       in_enchanting_table: true
       treasure: true
       tradeable: true
-    targets:
-      - tool
+    supported:
+      - axes
     conflicts_with: [ excavator ]
 
