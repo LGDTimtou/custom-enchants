@@ -4,18 +4,28 @@ import be.timonc.customenchantments.enchantments.defaultenchants.DefaultCustomEn
 import be.timonc.customenchantments.enchantments.defaultenchants.DefaultTriggerListener;
 import be.timonc.customenchantments.other.Util;
 import org.bukkit.Material;
+import org.bukkit.Tag;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Excavator extends DefaultTriggerListener {
 
     private final Set<Player> antiRecursion = new HashSet<>();
+
+    private final Map<Tag<Material>, Tag<Material>> toolToBlockTags = Map.of(
+            Tag.ITEMS_AXES, Tag.MINEABLE_AXE,
+            Tag.ITEMS_HOES, Tag.MINEABLE_HOE,
+            Tag.ITEMS_SHOVELS, Tag.MINEABLE_SHOVEL,
+            Tag.ITEMS_PICKAXES, Tag.MINEABLE_PICKAXE
+    );
 
     @EventHandler
     public void onBreakBlock(BlockBreakEvent e) {
@@ -24,13 +34,16 @@ public class Excavator extends DefaultTriggerListener {
 
         if (antiRecursion.contains(player)) return;
         if (!defaultCustomEnchant.check(player)) return;
-        if (Util.getEnchantedItem(player, defaultCustomEnchant.get()) == null) return;
+
+        ItemStack enchantedItem = Util.getEnchantedItem(player, defaultCustomEnchant.get());
+        if (enchantedItem == null) return;
+        Block centerBlock = e.getBlock();
+        Vector direction = player.getLocation().getDirection();
+
+        if (!isCorrectTool(enchantedItem, centerBlock))
+            return;
 
         antiRecursion.add(player);
-
-        Block centerBlock = e.getBlock();
-        Material centerMaterial = centerBlock.getType();
-        Vector direction = player.getLocation().getDirection();
 
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
@@ -42,11 +55,19 @@ public class Excavator extends DefaultTriggerListener {
                 else
                     adjacentBlock = centerBlock.getRelative(i, j, 0);
 
-                if (adjacentBlock.getType() == centerMaterial)
+                if (isCorrectTool(enchantedItem, adjacentBlock))
                     player.breakBlock(adjacentBlock);
             }
         }
 
         antiRecursion.remove(player);
+    }
+
+
+    private boolean isCorrectTool(ItemStack tool, Block block) {
+        return toolToBlockTags.entrySet()
+                              .stream()
+                              .anyMatch(entry -> entry.getKey().isTagged(tool.getType()) && entry.getValue()
+                                                                                                 .isTagged(block.getType()));
     }
 }

@@ -62,7 +62,6 @@ excavator:
       - axes
       - hoes
       - shovels
-      - shears
     conflicts_with: [ lumber ]
 
 lumber:
