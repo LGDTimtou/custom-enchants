@@ -13,3 +13,7 @@ softdepend:
 commands:
   customenchant:
     aliases: [ ce, cenchant, custome ]
+
+  reload:
+
+

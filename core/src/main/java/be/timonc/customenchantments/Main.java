@@ -1,8 +1,10 @@
 package be.timonc.customenchantments;
 
 import be.timonc.customenchantments.command.enchant.EnchantCommand;
+import be.timonc.customenchantments.command.reload.ReloadCommand;
 import be.timonc.customenchantments.customevents.CustomEvent;
 import be.timonc.customenchantments.enchantments.CustomEnchant;
+import be.timonc.customenchantments.enchantments.custom.fields.instructions.InstructionCall;
 import be.timonc.customenchantments.enchantments.custom.fields.instructions.InstructionCleanupListeners;
 import be.timonc.customenchantments.nms.EnchantmentManager;
 import be.timonc.customenchantments.other.File;
@@ -71,7 +73,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         if (!isFirstBoot())
-            Util.warn("Reloading will not load all changes made to an enchantment. Use /restart to apply them properly.");
+            Util.warn("Reloading will not load all changes made to an enchantment. Restart to apply changes properly!");
 
         // Register and load the files
         File.register();
@@ -87,9 +89,8 @@ public final class Main extends JavaPlugin {
         CustomEnchant.register();
         CustomEvent.register();
 
-        new EnchantCommand();
-
         registerListeners();
+        registerCommands();
 
         // Creating the WebSocketConnection
         webSocketConnection = new WebSocketConnection();
@@ -99,10 +100,16 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         System.setProperty("RELOAD", "TRUE");
         shutdownWebSocketConnection();
+        InstructionCall.callCleanupCommands();
     }
 
     private void registerListeners() {
         Util.registerListener(new InstructionCleanupListeners());
+    }
+
+    private void registerCommands() {
+        new EnchantCommand();
+        new ReloadCommand();
     }
 
     private String getMinecraftVersion() {

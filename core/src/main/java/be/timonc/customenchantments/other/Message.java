@@ -10,6 +10,12 @@ public enum Message {
     GLOBAL__SETTING("&cUpdate %setting% in config.yml to alter this behaviour"),
     GLOBAL__RESTART_SERVER("&7Please &orestart the server &7to apply changes."),
 
+    COMMANDS__RELOAD__DISABLED(
+            "&cThe reload command is disabled! It is known to cause memory leaks and break plugins."),
+    COMMANDS__RELOAD__ALTERNATIVE(
+            "&7For a safer alternative to reloading plugins, consider using "),
+    COMMANDS__RELOAD__PLUGMAN_X("&aPlugManX"),
+    COMMANDS__RELOAD__PLUGMAN_X_HOVER("&7Click here to open the PlugManX download page"),
     COMMANDS__USAGE("&7Usage: /ce <add | remove | create | edit | list>"),
     COMMANDS__ONLY_PLAYERS("&cOnly players can use this command"),
     COMMANDS__NO_PERMISSION("&cYou do not have permission to execute this command"),

@@ -14,13 +14,15 @@ import java.util.stream.Collectors;
 public abstract class Command implements CommandExecutor, TabCompleter {
 
     protected final String permission;
-    private final String label;
-    private final Map<String, SubCommand> subCommands;
+    private final Map<String, SubCommand> subCommands = new HashMap<>();
 
     public Command(String label) {
-        this.label = label;
         this.permission = "command." + label;
-        this.subCommands = new HashMap<>();
+
+        PluginCommand command = Main.getMain().getCommand(label);
+        assert command != null;
+        command.setExecutor(this);
+        command.setTabCompleter(this);
     }
 
     protected boolean hasPermission(Permissible permissible) {
@@ -33,10 +35,6 @@ public abstract class Command implements CommandExecutor, TabCompleter {
 
     protected void setSubCommands(SubCommand... subCommands) {
         Arrays.stream(subCommands).forEach(subCommand -> this.subCommands.put(subCommand.getLabel(), subCommand));
-        PluginCommand command = Main.getMain().getCommand(label);
-        assert command != null;
-        command.setExecutor(this);
-        command.setTabCompleter(this);
     }
 
     protected SubCommand getSubCommand(String key) {
