@@ -39,14 +39,15 @@ public class Excavator extends DefaultTriggerListener {
         if (enchantedItem == null) return;
         Block centerBlock = e.getBlock();
         Vector direction = player.getLocation().getDirection();
+        Integer enchantedLevel = enchantedItem.getEnchantmentLevel(defaultCustomEnchant.get().getEnchantment());
 
         if (!isCorrectTool(enchantedItem, centerBlock))
             return;
 
         antiRecursion.add(player);
 
-        for (int i = -1; i <= 1; i++) {
-            for (int j = -1; j <= 1; j++) {
+        for (int i = -enchantedLevel; i <= enchantedLevel; i++) {
+            for (int j = -enchantedLevel; j <= enchantedLevel; j++) {
                 Block adjacentBlock;
                 if (Math.abs(direction.getY()) > 0.5)
                     adjacentBlock = centerBlock.getRelative(i, 0, j);

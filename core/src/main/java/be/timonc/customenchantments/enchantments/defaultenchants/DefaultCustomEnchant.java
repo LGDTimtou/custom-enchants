@@ -11,21 +11,23 @@ import org.bukkit.permissions.Permissible;
 public enum DefaultCustomEnchant {
 
     //Enchantments
-    REPLENISH("replenish", 1, new Replenish()),
-    TELEKINESIS("telekinesis", 1, new Telekinesis()),
-    LUMBER("lumber", 1, new Lumber()),
-    EXCAVATOR("excavator", 1, new Excavator());
+    REPLENISH("replenish", false, 1, new Replenish()),
+    TELEKINESIS("telekinesis", false, 1, new Telekinesis()),
+    LUMBER("lumber", false, 1, new Lumber()),
+    EXCAVATOR("excavator", true, 2, new Excavator());
 
     private final String namespacedName;
-    private final int maxLevel;
+    private final boolean allowsCustomMaxLevel;
+    private final int defaultMaxLevel;
     private final TriggerListener listener;
 
     private CustomEnchant enchantment;
 
 
-    DefaultCustomEnchant(String namespacedName, int maxLevel, TriggerListener listener) {
+    DefaultCustomEnchant(String namespacedName, boolean allowsCustomMaxLevel, int defaultMaxLevel, TriggerListener listener) {
         this.namespacedName = namespacedName;
-        this.maxLevel = maxLevel;
+        this.allowsCustomMaxLevel = allowsCustomMaxLevel;
+        this.defaultMaxLevel = defaultMaxLevel;
         this.listener = listener;
     }
 
@@ -39,8 +41,12 @@ public enum DefaultCustomEnchant {
         return namespacedName;
     }
 
-    public int getMaxLevel() {
-        return maxLevel;
+    public boolean allowsCustomMaxLevel() {
+        return allowsCustomMaxLevel;
+    }
+
+    public int getDefaultMaxLevel() {
+        return defaultMaxLevel;
     }
 
     public TriggerListener getListener() {

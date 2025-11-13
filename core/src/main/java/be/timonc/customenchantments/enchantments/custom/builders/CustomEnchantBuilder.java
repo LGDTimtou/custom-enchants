@@ -97,7 +97,9 @@ public class CustomEnchantBuilder {
         if (!enabled) return;
 
         //Setting max level
-        maxLvl = defaultCustomEnchant.getMaxLevel();
+        maxLvl = config.getInt(namespacedName + ".max_level");
+        if (maxLvl <= 0 || maxLvl > 255 || !defaultCustomEnchant.allowsCustomMaxLevel())
+            maxLvl = defaultCustomEnchant.getDefaultMaxLevel();
 
         //Parsing the definition
         definition = new CustomEnchantDefinitionBuilder(

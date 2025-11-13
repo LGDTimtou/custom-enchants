@@ -44,6 +44,7 @@ telekinesis:
 
 excavator:
   enabled: true
+  max_level: 2
   definition:
     needs_permission: false
     enchanting_table:
