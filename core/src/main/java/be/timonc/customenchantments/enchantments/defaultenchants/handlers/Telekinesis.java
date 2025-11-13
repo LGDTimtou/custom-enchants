@@ -1,4 +1,4 @@
-package be.timonc.customenchantments.enchantments.defaultenchants.listeners;
+package be.timonc.customenchantments.enchantments.defaultenchants.handlers;
 
 import be.timonc.customenchantments.enchantments.defaultenchants.DefaultCustomEnchant;
 import be.timonc.customenchantments.enchantments.defaultenchants.DefaultTriggerListener;

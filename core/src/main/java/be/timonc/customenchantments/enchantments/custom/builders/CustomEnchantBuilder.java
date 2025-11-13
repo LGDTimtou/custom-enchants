@@ -109,8 +109,8 @@ public class CustomEnchantBuilder {
         ).build();
         if (definition == null) error = true;
 
-        //Register the listener
-        Util.registerListener(defaultCustomEnchant.getListener());
+        //Register the listener or runnable
+        defaultCustomEnchant.registerHandler();
     }
 
     private Set<String> findMissingDependencies(List<String> dependencies) {
