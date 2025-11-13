@@ -138,7 +138,7 @@ public final class Main extends JavaPlugin {
             enchantmentsManager = enchantmentManagerClass.getConstructor().newInstance();
         } catch (ClassNotFoundException exception) {
             Util.error("Minecraft " + getMinecraftVersion() +
-                    " is not supported by this version of CustomEnchantments)");
+                    " is not supported by this version of CustomEnchantments");
             Util.error("Download our latest update for newer versions!");
         } catch (ReflectiveOperationException ignored) {
         }
