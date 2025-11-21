@@ -16,7 +16,7 @@ public enum Message {
             "&7For a safer alternative to reloading plugins, consider using "),
     COMMANDS__RELOAD__PLUGMAN_X("&aPlugManX"),
     COMMANDS__RELOAD__PLUGMAN_X_HOVER("&7Click here to open the PlugManX download page"),
-    COMMANDS__USAGE("&7Usage: /ce <add | remove | create | edit | list>"),
+    COMMANDS__USAGE("&7Usage: /ce <add | remove | create | edit | list | reload>"),
     COMMANDS__ONLY_PLAYERS("&cOnly players can use this command"),
     COMMANDS__NO_PERMISSION("&cYou do not have permission to execute this command"),
     COMMANDS__NON_EXISTING_ENCHANT("&cEnchantment does not exist"),

@@ -11,13 +11,13 @@ public abstract class SubCommand {
     private final String permission;
     private final String label;
     private final int minArguments;
-    private final String usageMessageID;
+    private final String usageMessage;
 
-    public SubCommand(Command command, String label, int minArguments, String usageMessageID) {
+    public SubCommand(Command command, String label, int minArguments, String usageMessage) {
         this.permission = command.permission;
         this.label = label;
         this.minArguments = minArguments + 1;
-        this.usageMessageID = usageMessageID;
+        this.usageMessage = usageMessage;
     }
 
     public String getLabel() {
@@ -29,7 +29,7 @@ public abstract class SubCommand {
     }
 
     public String getUsageMessage() {
-        return usageMessageID;
+        return usageMessage;
     }
 
     public abstract List<String> getTabValues(CommandSender commandSender, String[] args);

@@ -39,7 +39,7 @@ public class Excavator extends DefaultTriggerListener {
         if (enchantedItem == null) return;
         Block centerBlock = e.getBlock();
         Vector direction = player.getLocation().getDirection();
-        Integer enchantedLevel = enchantedItem.getEnchantmentLevel(defaultCustomEnchant.get().getEnchantment());
+        int enchantedLevel = enchantedItem.getEnchantmentLevel(defaultCustomEnchant.get().getEnchantment());
 
         if (!isCorrectTool(enchantedItem, centerBlock))
             return;
