@@ -1,10 +1,10 @@
 package be.timonc.customenchantments.websocket;
 
 import be.timonc.customenchantments.Main;
-import be.timonc.customenchantments.enchantments.CustomEnchant;
-import be.timonc.customenchantments.other.File;
-import be.timonc.customenchantments.other.Message;
-import be.timonc.customenchantments.other.Util;
+import be.timonc.customenchantments.engine.CustomEnchant;
+import be.timonc.customenchantments.util.Util;
+import be.timonc.customenchantments.util.enums.File;
+import be.timonc.customenchantments.util.enums.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.scheduler.BukkitTask;

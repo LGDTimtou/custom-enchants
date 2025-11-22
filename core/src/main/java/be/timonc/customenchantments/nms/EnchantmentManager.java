@@ -1,7 +1,7 @@
 package be.timonc.customenchantments.nms;
 
-import be.timonc.customenchantments.enchantments.CustomEnchant;
-import be.timonc.customenchantments.enchantments.CustomEnchantRecord;
+import be.timonc.customenchantments.engine.CustomEnchant;
+import be.timonc.customenchantments.engine.CustomEnchantRecord;
 import org.bukkit.enchantments.Enchantment;
 
 import java.util.Set;

@@ -1,9 +1,9 @@
 package be.timonc.customenchantments.websocket;
 
-import be.timonc.customenchantments.enchantments.CustomEnchant;
-import be.timonc.customenchantments.other.File;
-import be.timonc.customenchantments.other.Message;
-import be.timonc.customenchantments.other.Util;
+import be.timonc.customenchantments.engine.CustomEnchant;
+import be.timonc.customenchantments.util.Util;
+import be.timonc.customenchantments.util.enums.File;
+import be.timonc.customenchantments.util.enums.Message;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;

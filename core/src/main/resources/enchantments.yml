@@ -194,11 +194,10 @@ ganda:
               %under_feet_block_z% minecraft:air
           instructions:
             - load:
-                context: player
-                identifier: ganda_state
+                identifier: "%player%_ganda_state"
                 default_value: "TRUE"
             - conditional:
-                condition: "%ganda_state%"
+                condition: "%%player%_ganda_state%"
                 if:
                   - command: setblock %under_feet_block_x% %under_feet_block_y% %under_feet_block_z%
                       minecraft:bedrock
@@ -218,15 +217,14 @@ ganda:
           cleanup_commands: [ ]
           instructions:
             - load:
-                context: player
-                identifier: ganda_state
+                identifier: "%player%_ganda_state"
                 default_value: "TRUE"
             - save:
-                context: player
-                identifier: ganda_state
-                value: $[!%ganda_state%]
+                identifier: "%player%_ganda_state"
+                value: "$[!%%player%_ganda_state%]"
+                persistent: true
             - conditional:
-                condition: "%ganda_state%"
+                condition: "%%player%_ganda_state%"
                 if:
                   - command: say Ganda has been enabled!
                 else:

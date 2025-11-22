@@ -96,7 +96,7 @@
                                         <exec executable="C:/Tools/mcrcon.exe">
                                             <arg value="-p"/>
                                             <arg value="timonc"/>
-                                            <arg value="plugman reload all"/>
+                                            <arg value="plugman reload CustomEnchants"/>
                                         </exec>
 
                                         <!--<exec dir="${test.server.dir}" executable="cmd">

@@ -1,12 +1,12 @@
 package be.timonc.customenchantments.nms_1_21_6;
 
 
-import be.timonc.customenchantments.enchantments.CustomEnchant;
-import be.timonc.customenchantments.enchantments.CustomEnchantDefinition;
-import be.timonc.customenchantments.enchantments.CustomEnchantRecord;
+import be.timonc.customenchantments.engine.CustomEnchant;
+import be.timonc.customenchantments.engine.CustomEnchantDefinition;
+import be.timonc.customenchantments.engine.CustomEnchantRecord;
 import be.timonc.customenchantments.nms.EnchantmentManager;
 import be.timonc.customenchantments.nms.Reflex;
-import be.timonc.customenchantments.other.Util;
+import be.timonc.customenchantments.util.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.MappedRegistry;
